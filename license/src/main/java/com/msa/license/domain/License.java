@@ -19,5 +19,5 @@ public class License {
     private String licenseName;
 
     @Column
-    private LocalDate createDate;
+    private LocalDate createdDate;
 }

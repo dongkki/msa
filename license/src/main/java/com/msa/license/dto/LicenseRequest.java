@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LicenseRequest {
-    @NotBlank(message = "라이센스 이름은 필수입니다.")
-    @Size(min = 2, max = 30, message = "라이센스 이름은 2~30자 사이여야 합니다.")
-    private String licensesName;
+    @NotBlank(message="라이선스 이름은 필수입니다.")
+    @Size(min=2, max=30, message="라이선스 이름은 2~30자 사이여야 합니다.")
+    private String licenseName;
 }
