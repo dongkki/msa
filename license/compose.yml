@@ -1,0 +1,47 @@
+services:
+  oracle:
+    image: oracle
+    container_name: oracle
+    ports:
+      - 1521:1521
+    environment:
+      - ORACLE_PWD=oracle
+    volumes:
+      - oracle_data_volum:/opt/oracle/oradata
+    networks:
+      - oracle-network
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM DUAL;' | sqlplus -s license/license@//localhost:1521/license"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+
+  license:
+    image: license
+    container_name: license
+    ports:
+      - 8080:8080
+    networks:
+      - oracle-network
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+    depends_on:
+      oracle:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  oracle_data_volum:
+    external: true
+
+networks:
+  oracle-network:
+    external: true

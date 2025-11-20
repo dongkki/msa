@@ -3,12 +3,13 @@ package com.msa.license.dto;
 import com.msa.license.domain.License;
 import lombok.Builder;
 import lombok.Getter;
+import org.hibernate.boot.jaxb.hbm.internal.RepresentationModeConverter;
 
 import java.time.LocalDate;
 
 @Getter
 @Builder
-public class LicenseResponse {
+public class LicenseResponse extends RepresentationModeConverter {
     private Long licenseId;
     private String licenseName;
     private LocalDate createDate;
