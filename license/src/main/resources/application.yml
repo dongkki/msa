@@ -1,4 +1,10 @@
 spring:
+  application:
+    name: license
+  profiles:
+    active: dev
+  config:
+    import: configserver:http://config:8070
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
     url: jdbc:oracle:thin:@oracle:1521/license
