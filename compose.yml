@@ -31,7 +31,7 @@ services:
       - oracle-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://loaclhost:8070/acturator/health"]
+      test: ["CMD", "curl", "-f", "http://loaclhost:8070/actuator/health"]
       interval: 10s
       timeout: 5s
       retries: 3
