@@ -5,15 +5,6 @@ spring:
     active: dev
   config:
     import: configserver:http://config:8070
-  datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@oracle:1521/license
-    username: license
-    password: license
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
 
 management:
   endpoint:
