@@ -22,6 +22,21 @@ services:
       retries: 30
       start_period: 60s
 
+  config:
+    image: config
+    container_name: config
+    ports:
+      - 8070:8070
+    networks:
+      - oracle-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://loaclhost:8070/acturator/healthcheck"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
   license:
     image: license
     container_name: license
